@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container {
+    text-align: center;
+    background: #333;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+h1, h2 {
+    color: #2a5298;
+    margin-bottom: 2rem;
+}
+
+.coin {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin: 0 auto 2rem;
+    transform-style: preserve-3d;
+}
+
+.heads, .tails {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tails {
+    transform: rotateY(180deg);
+}
+
+img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+button {
+    background: #2a5298;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #1e3c72;
+}
+
+#result {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #2a5298;
+    font-weight: bold;
+}
+
+.flipping-heads {
+    animation: flip-heads 1s ease-in-out forwards;
+}
+
+.flipping-tails {
+    animation: flip-tails 1s ease-in-out forwards;
+}
+
+@keyframes flip-heads {
+    0% {
+        transform: rotateY(0);
+    }
+    100% {
+        transform: rotateY(1800deg); /* Заканчивается на Орле */
+    }
+}
+
+@keyframes flip-tails {
+    0% {
+        transform: rotateY(0);
+    }
+    100% {
+        transform: rotateY(1980deg); /* Заканчивается на Решке (1800 + 180) */
+    }
+}
+
+/* Стили для галереи */
+.gallery-container {
+    background: #333;    padding: 2rem;
+    border-radius: 15px;
+
+    width: 100%;
+    max-width: 1920px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    display: block;
+    transition: filter 0.3s;
+}
+
+.ban-overlay {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #2a5298;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.gallery-item.banned img {
+    filter: grayscale(100%) brightness(0.5);
+}
+
+.gallery-item.banned .ban-overlay {
+    background: #dc3545;
+} 
